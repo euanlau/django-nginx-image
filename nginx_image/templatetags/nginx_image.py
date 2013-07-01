@@ -20,15 +20,14 @@ def thumbnail(image_url_or_fieldfile, width=None, height=None, crop=False):
 
     params = urllib.urlencode(params_dict)
 
-    image_url = None
+    image_url = ''
     if isinstance(image_url_or_fieldfile, (ImageFieldFile, )):
         if getattr(image_url_or_fieldfile, 'name', None) and hasattr(image_url_or_fieldfile, 'url'):
             image_url = image_url_or_fieldfile.url
     else:
         image_url = image_url_or_fieldfile
 
-    if not image_url:
-        return None
+    if not image_url: return image_url
 
     url = "{image_url}?{params}".format(
         image_url=image_url,
